@@ -259,6 +259,13 @@ Vagrant.configure("2") do |config|
   # config.vm.provision "shell", path: "#{github_url}/scripts/git-ftp.sh", privileged: false
 
   ####
+  # OCI
+  #You will need v. 11.2.0.3.0 instantclient basic and sdk in project root (linux version)
+  ##########
+  config.vm.provision "shell", path: "#{github_url}/scripts/oci.sh", privileged: false
+
+
+  ####
   # Local Scripts
   # Any local scripts you may want to run post-provisioning.
   # Add these to the same directory as the Vagrantfile.
