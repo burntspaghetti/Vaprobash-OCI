@@ -17,17 +17,17 @@ if [ -e /vagrant/instantclient-basic-linux-11.2.0.3.0.zip ] && [ -e /vagrant/ins
 
                 mkdir -p /usr/local/src
                 cd /usr/local/src
-                wget http://pecl.php.net/get/oci8-1.4.9.tgz
-                tar xzf oci8-1.4.9.tgz
+                sudo wget http://pecl.php.net/get/oci8-1.4.9.tgz
+                sudo tar xzf oci8-1.4.9.tgz
                 cd oci8-1.4.9
                 sudo phpize
                 sudo ./configure --with-oci8=shared,instantclient,/home/vagrant/instantclient_11_2/
                 sudo make
                 sudo make install
 
-                chown vagrant /etc/php5/apache2/php.ini
-                echo extension=oci8.so >> /etc/php5/apache2/php.ini
-                /etc/init.d/apache2 restart 
+                sudo chown vagrant /etc/php5/apache2/php.ini
+                sudo echo extension=oci8.so >> /etc/php5/apache2/php.ini
+                sudo /etc/init.d/apache2 restart 
 
         fi
 
