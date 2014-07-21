@@ -13,7 +13,7 @@ if [ -e /vagrant/instantclient-basic-linux-11.2.0.3.0.zip ] && [ -e /vagrant/ins
                 sudo ln -s libclntsh.so.11.1 libclntsh.so
                 sudo ln -s libocci.so.11.1 libocci.so
 
-                sudo export ORACLE_HOME=/home/vagrant/instantclient_11_2/
+                export ORACLE_HOME=/home/vagrant/instantclient_11_2/
 
                 mkdir -p /usr/local/src
                 cd /usr/local/src
@@ -25,7 +25,7 @@ if [ -e /vagrant/instantclient-basic-linux-11.2.0.3.0.zip ] && [ -e /vagrant/ins
                 sudo make
                 sudo make install
 
-                sudo chown vagrant/etc/php5/apache2/php.ini
+                sudo chown vagrant /etc/php5/apache2/php.ini
                 sudo echo extension=oci8.so >> /etc/php5/apache2/php.ini
                 sudo /etc/init.d/apache2 restart 
 
