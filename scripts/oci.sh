@@ -10,10 +10,10 @@ if [ -e /vagrant/instantclient-basic-linux-11.2.0.3.0.zip ] && [ -e /vagrant/ins
                 unzip instantclient-sdk-linux-11.2.0.3.0.zip
                 unzip instantclient-basic-linux-11.2.0.3.0.zip
                 cd instantclient_11_2/
-                ln -s libclntsh.so.11.1 libclntsh.so
-                ln -s libocci.so.11.1 libocci.so
+                sudo ln -s libclntsh.so.11.1 libclntsh.so
+                sudo ln -s libocci.so.11.1 libocci.so
 
-                export ORACLE_HOME=/home/vagrant/instantclient_11_2/
+                sudo export ORACLE_HOME=/home/vagrant/instantclient_11_2/
 
                 mkdir -p /usr/local/src
                 cd /usr/local/src
