@@ -1,14 +1,14 @@
 #OCI
-if [ -e /vagrant/instantclient-basic-linux-11.2.0.3.0.zip ] && [ -e /vagrant/instantclient-sdk-linux-11.2.0.3.0.zip ]; then
+if [ -e /vagrant/instantclient-basic-linux.x64-11.2.0.3.0.zip ] && [ -e /vagrant/instantclient-sdk-linux.x64-11.2.0.3.0.zip ]; then
 
-        cp /vagrant/instantclient-basic-linux-11.2.0.3.0.zip /home/vagrant
-        cp /vagrant/instantclient-sdk-linux-11.2.0.3.0.zip /home/vagrant/
+        cp /vagrant/instantclient-basic-linux.x64-11.2.0.3.0.zip /home/vagrant
+        cp /vagrant/instantclient-sdk-linux.x64-11.2.0.3.0.zip /home/vagrant/
         
         if [ ! -d /home/vagrant/instantclient_11_2 ]; then
 
                 cd /home/vagrant
-                unzip instantclient-sdk-linux-11.2.0.3.0.zip
-                unzip instantclient-basic-linux-11.2.0.3.0.zip
+                unzip instantclient-sdk-linux.x64-11.2.0.3.0.zip
+                unzip instantclient-basic-linux.x64-11.2.0.3.0
                 cd instantclient_11_2/
                 sudo ln -s libclntsh.so.11.1 libclntsh.so
                 sudo ln -s libocci.so.11.1 libocci.so
