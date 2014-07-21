@@ -25,8 +25,8 @@ if [ -e /vagrant/instantclient-basic-linux-11.2.0.3.0.zip ] && [ -e /vagrant/ins
                 sudo make
                 sudo make install
 
-                sudo chown vagrant /etc/php5/apache2/php.ini
-                sudo echo extension=oci8.so >> /etc/php5/apache2/php.ini
+                sudo chown vagrant /etc/php5/fpm/php.ini
+                sudo echo extension=oci8.so >> /etc/php5/fpm/php.ini
                 sudo /etc/init.d/apache2 restart 
 
         fi
