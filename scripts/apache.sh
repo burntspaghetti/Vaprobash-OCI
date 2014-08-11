@@ -63,7 +63,7 @@ sudo a2dissite 000-default
 if [[ $PHP_IS_INSTALLED -eq 0 || $HHVM_IS_INSTALLED -eq 0 ]]; then
 
     # PHP Config for Apache
-    sudo a2enmod proxy_fcgi
+    #sudo a2enmod proxy_fcgi
 else
     # vHost script assumes ProxyPassMatch to PHP
     # If PHP is not installed, we'll comment it out
