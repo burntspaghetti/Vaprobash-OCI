@@ -41,10 +41,11 @@ hhvm                  = "false"
 
 # PHP Options
 composer_packages     = [        # List any global Composer packages that you want to install
-  #"phpunit/phpunit:4.0.*",
+  "phpunit/phpunit:4.0.*",
   #"codeception/codeception=*",
   #"phpspec/phpspec:2.0.*@dev",
   #"squizlabs/php_codesniffer:1.5.*",
+  "laravel/envoy=~1.0",
 ]
 
 # Default web server document root
