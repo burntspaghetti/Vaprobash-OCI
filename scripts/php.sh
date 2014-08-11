@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-if [[ $2 == "true" ]]; then
+PHP_TIMEZONE=$1
+HHVM=$2
+
+if [[ $HHVM == "true" ]]; then
 
     echo ">>> Installing HHVM"
 
@@ -33,23 +36,22 @@ else
 
     # Install PHP
     # -qq implies -y --force-yes
-    # php5-fpm
-    sudo apt-get install -qq php5-cli php5-mysql php5-pgsql php5-sqlite php5-curl php5-gd php5-gmp php5-mcrypt php5-xdebug php5-memcached php5-imagick php5-intl php5-dev libapache2-mod-php5 libaio1
+    sudo apt-get install -qq php5-cli php5-fpm php5-mysql php5-pgsql php5-sqlite php5-curl php5-gd php5-gmp php5-mcrypt php5-xdebug php5-memcached php5-imagick php5-intl
 
     # Set PHP FPM to listen on TCP instead of Socket
-    #sudo sed -i "s/listen =.*/listen = 127.0.0.1:9000/" /etc/php5/fpm/pool.d/www.conf
+    sudo sed -i "s/listen =.*/listen = 127.0.0.1:9000/" /etc/php5/fpm/pool.d/www.conf
 
     # Set PHP FPM allowed clients IP address
-    #sudo sed -i "s/;listen.allowed_clients/listen.allowed_clients/" /etc/php5/fpm/pool.d/www.conf
+    sudo sed -i "s/;listen.allowed_clients/listen.allowed_clients/" /etc/php5/fpm/pool.d/www.conf
 
     # Set run-as user for PHP5-FPM processes to user/group "vagrant"
     # to avoid permission errors from apps writing to files
-    #sudo sed -i "s/user = www-data/user = vagrant/" /etc/php5/fpm/pool.d/www.conf
-    #sudo sed -i "s/group = www-data/group = vagrant/" /etc/php5/fpm/pool.d/www.conf
+    sudo sed -i "s/user = www-data/user = vagrant/" /etc/php5/fpm/pool.d/www.conf
+    sudo sed -i "s/group = www-data/group = vagrant/" /etc/php5/fpm/pool.d/www.conf
 
-    #sudo sed -i "s/listen\.owner.*/listen.owner = vagrant/" /etc/php5/fpm/pool.d/www.conf
-    #sudo sed -i "s/listen\.group.*/listen.group = vagrant/" /etc/php5/fpm/pool.d/www.conf
-    #sudo sed -i "s/listen\.mode.*/listen.mode = 0666/" /etc/php5/fpm/pool.d/www.conf
+    sudo sed -i "s/listen\.owner.*/listen.owner = vagrant/" /etc/php5/fpm/pool.d/www.conf
+    sudo sed -i "s/listen\.group.*/listen.group = vagrant/" /etc/php5/fpm/pool.d/www.conf
+    sudo sed -i "s/listen\.mode.*/listen.mode = 0666/" /etc/php5/fpm/pool.d/www.conf
 
 
     # xdebug Config
@@ -69,16 +71,12 @@ xdebug.var_display_max_data = 1024
 EOF
 
     # PHP Error Reporting Config
-    #sudo sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php5/fpm/php.ini
-    #sudo sed -i "s/display_errors = .*/display_errors = On/" /etc/php5/fpm/php.ini
-    sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php5/apache2/php.ini
-    sed -i "s/display_errors = .*/display_errors = On/" /etc/php5/apache2/php.ini
+    sudo sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php5/fpm/php.ini
+    sudo sed -i "s/display_errors = .*/display_errors = On/" /etc/php5/fpm/php.ini
 
     # PHP Date Timezone
-    #sudo sed -i "s/;date.timezone =.*/date.timezone = ${2/\//\\/}/" /etc/php5/fpm/php.ini
-    sudo sed -i "s/;date.timezone =.*/date.timezone = ${2/\//\\/}/" /etc/php5/apache2/php.ini
-    sudo sed -i "s/;date.timezone =.*/date.timezone = ${2/\//\\/}/" /etc/php5/cli/php.ini
+    sudo sed -i "s/;date.timezone =.*/date.timezone = ${PHP_TIMEZONE/\//\\/}/" /etc/php5/fpm/php.ini
+    sudo sed -i "s/;date.timezone =.*/date.timezone = ${PHP_TIMEZONE/\//\\/}/" /etc/php5/cli/php.ini
 
-    #sudo service php5-fpm restart
-    sudo service apache2 restart
+    sudo service php5-fpm restart
 fi
