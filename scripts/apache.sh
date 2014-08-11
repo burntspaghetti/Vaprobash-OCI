@@ -64,10 +64,11 @@ sudo a2dissite 000-default
 
     # PHP Config for Apache
     #sudo a2enmod proxy_fcgi
+    sudo a2enmod php5 
 #else
     # vHost script assumes ProxyPassMatch to PHP
     # If PHP is not installed, we'll comment it out
-    sudo sed -i "s@ProxyPassMatch@#ProxyPassMatch@" /etc/apache2/sites-available/$1.xip.io.conf
+    #sudo sed -i "s@ProxyPassMatch@#ProxyPassMatch@" /etc/apache2/sites-available/$1.xip.io.conf
 #fi
 
 sudo service apache2 restart
