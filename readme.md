@@ -11,7 +11,7 @@ $ curl -L https://raw.githubusercontent.com/jbstowe/Vaprobash-OCI/master/Vagrant
 
 ```
 
-You will also need the oracle instant client basic **and** sdk zip files located [here](http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html).
+You will also need the oracle instant client basic **and** sdk zip files located [here](http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html) alongside the Vagrantfile.
 **NOTE** the defualt script works with instant client v.11.2.0.3.0 and it expects the zip files to match exactly the name when downloaded from oracle.  It is possible to change the script to work with other versions if needed.
 
 
