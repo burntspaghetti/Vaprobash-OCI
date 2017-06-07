@@ -17,7 +17,7 @@ if [ -e /vagrant/instantclient-basic-linux.x64-11.2.0.3.0.zip ] && [ -e /vagrant
 
                 mkdir -p /usr/local/src
                 cd /usr/local/src
-                sudo wget http://pecl.php.net/get/oci8-1.4.9.tgz
+                sudo wget http://pecl.php.net/get/oci8-2.1.2.tgz
                 sudo tar xzf oci8-2.1.2.tgz
                 cd oci8-2.1.2
                 sudo phpize
