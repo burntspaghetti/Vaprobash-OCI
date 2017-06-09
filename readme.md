@@ -1,4 +1,4 @@
-To connect to an Oracle database using Laravel Homestead, Nginx, and PHP7.1, add the following to the bottom of your Homestead.yaml:
+To connect to an Oracle database using Laravel Homestead, Nginx, and PHP7.1, add the following to the bottom of your Homestead Vagrantfile:
 
   ```# OCI
 
